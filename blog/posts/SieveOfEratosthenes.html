@@ -1,0 +1,26 @@
+<h4>In this article I'll be describing two kinds of sieve:<br>
+	<ol>
+		<li>Simple Sieve: For listing primes from 1 to N.</li>
+		<li>Segmented Sieve: For listing primes from A to B.</li>
+	</ol>
+	<br>
+</h4>
+<h3>Simple Sieve:</h3>
+<h4>The idea here is pretty awesome. Suppose you have to list all the primes from 1 to N. We mark all the numbers from 2 to N as primes initially.(1 and 0 are discarded as primes).
+	<br>
+	Then we start with 2 and mark all its multiples as non-primes since they have 2 as its factor. We keep moving and if we find a number which hasn't been marked as non-prime that means this number doesn't have any prime factor, otherwise it would have been marked. We mark all its multiples and move on. This way, at the end, we get all the primes marked as primes.
+<hr>
+Algo: <br>
+<ol>
+	<li>Suppose we have to list primes up to N-1, take an array of length N and mark all numbers as 1(as prime).</li>
+	<li>Since 2 is smallest prime number, we start at 2 and mark all its multiples and keep going.</li>
+	<li>For a number, if it's marked as 1(no smaller factor, thus prime), mark all its multiples up to N.</li>
+	<li>For a number, if it's marked as 0(at least one smaller factor, thus non-prime), all its multiples are already marked by the number that marked this one, so we move on.</li>
+	<li>We are done marking, start from 2 to N, if it's marked as 1 include it into your list of primes, otherwise, discard it.</li>
+</ol>
+Below is the c++ implementation for the same:<br>
+</h4>
+<hr>
+<script src="http://ideone.com/e.js/hdJ2Ek" type="text/javascript" ></script>
+<hr>
+<h4>The good news is that it works fine, but it's not very efficient. We can increase the efficiency by making careful observations and avoiding doing redundant steps.

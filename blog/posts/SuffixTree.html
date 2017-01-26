@@ -1,0 +1,9 @@
+<h4>
+	Ukkonen's algorithm is to build implicit suffix tree(adding $ \$ $ at the eos makes it normal) in $O(n)$ time using online construction. There are n phases in construction, one for each character. In phase $ i+1 $, we build tree $ T_{i+1} $ from $ T_{i} $ built in previous phase. Each phase $ i+1 $ further has $ i+1 $ extensions, in $ j_{th} $ extension we add substring $ [j..i+1] $ to the tree. Since we have put substring $ [j..i] $ in the previous phase, so we just need to add $ {i+1}_{th} $ character at the end of the label. 
+	<br><br>
+	There are $ 3 $ extension rules: <br>
+	<span style="color:blue">Rule 1:</span> If the path from the root labelled substring $ [j..i] $ ends at a leaf edge, $ {i+1}_{th} $ is added at the end of label.<br>
+	<span style="color:blue">Rule 2:</span> If the path from the root labelled substring $ [j..i] $ ends at a non-leaf edge and the next character is not $ {i+1}_{th} $, a new leaf edge will be created with label $ {i+1}_{th} $ character and number j.<br>
+	<span style="color:blue">Rule 3:</span> If the path from the root labelled substring $ [j..i] $ ends at a non-leaf edge and next character is $ {i+1}_{th} $, do nothing.<br><br>
+	<span style="color:blue">Suffix Link:</span> For a node with path label $ xA $, there's another node with path label $ A $, then a pointer from ${node}_{xA}$ to ${node}_{A}$ is called suffix link.<br>
+</h4>

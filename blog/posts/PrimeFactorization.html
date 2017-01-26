@@ -1,0 +1,30 @@
+<p>Factoring an integer into its prime constituents is called prime factorization. This task arises as sub-problem for various high-level problems in programming contests.
+<br>
+Here I'm going to mention two very important and fast methods to do the same. So let's cut the crap and go straight to algo and then onto code implementation.</p>
+<h3> First method: Iterating through primes</h3>
+<h4><p> The idea here is simple, instead of checking for every number whether it's a factor of N, we will iterate through prime numbers only, so we find primes first, and then we are done.</p></h4>
+<h3>Algo:</h3>
+<ol>
+		<h4><li>If you want to factorize a number N, compute all the primes up to sqrt(N).(Because there is no prime factor greater than sqrt(N))</li></h4>
+			<h4><li>Now that you have all the primes, start iterating through all of them.</li></h4>
+				<h4><li>For each prime if it divides N, put it into factors, otherwise, discard it.</li></h4>
+</ol>
+<h4 style="color:maroon;">Note: To list all the primes upto some number, you should use Sieve of Eratosthenes. <br><br>
+	<p>Below is the c++ code implementation for the same:</p> <hr></h4>
+<script src="http://ideone.com/e.js/HutMUo" type="text/javascript" ></script>
+<hr>
+
+<h3>Second method: Finding lowest prime factor</h3>
+<h4><p>The method above is efficient enough to use in most cases, but there's another more efficient approach that you can use to do it. What if we knew lowest prime factor for every number till N? We just have to divide the current number by it's lowest prime factor and so on, until we find that we are left with 1. This way we can factorize any number in steps equals to the number of its prime factors only. Also we can find lowest prime factor for every number from 1 to N, doing almost linear work using sieve like method.</p></h4>
+<h3>Algo:</h3>
+<ol>
+	<h4>
+		<li>First of all we set lowest prime factor for every number from 1 to n, using sieve like method.</li>
+		<li>Now you have number N, and you know what's its lowest prime factor, you just divide N by its lowest prime factor and put the factor into factors set. You're left with another number M=N/lpfact[N];</li>
+		<li>You repeate step number 2 until the number becomes 1. And there you go, you just return the set of factors.</li>
+	</h4>
+</ol>
+<h4 style="color:maroon;">Note: For more information on step no. 1, you can refer to this link:<a href="https://tp-iiita.quora.com/Number-Theory-and-Modular-Arithmetic-Part-1">Number Theory</a>. You can find something relevent in solution to 5th motivation problem in that link.<br>
+	<p>Below is the c++ code implementation for the same:</p><hr>
+</h4>
+<script src="http://ideone.com/e.js/OkK3KQ" type="text/javascript" ></script>

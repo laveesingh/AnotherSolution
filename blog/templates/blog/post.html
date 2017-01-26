@@ -1,0 +1,18 @@
+{% extends "blog/header.html" %}
+
+{% block content %}
+
+<center><h3><b><u>{{post.id}}: {{post.title}}</u></b></h3></center>
+    <br>
+    <h4>
+			{{post.body | safe}}
+    </h4>
+    <br> <hr> <br>
+    <h4>
+			<b>Last Edit:</b> {{post.last_edit}} <br>
+			<b> Publish Date:</b> {{post.date}} <br>
+			<b> Last Edit Date:</b> {{post.last_edit_date}} <br>
+    </h4>
+		<h3>
+		</h3>
+{%endblock%}
