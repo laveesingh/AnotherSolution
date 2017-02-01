@@ -1,7 +1,7 @@
 *{
 	font-family: "Times New Roman", Times, serif;
-	background-color: #000;
-	color: darkviolet;
+	background-color: #bbb;
+	color: black;
 }
 
 #my-image{
@@ -25,5 +25,5 @@
 }
 
 #post-list a{
-	color: red;
+	color: blue;
 }
