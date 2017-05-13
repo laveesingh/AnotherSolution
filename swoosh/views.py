@@ -1,5 +1,8 @@
+import matplotlib.pyplot as plt
+
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import JsonResponse
 from django.http import HttpResponseRedirect
 
 from .forms import NameForm
@@ -29,3 +32,7 @@ def get_name(request):
     else:
         form = NameForm()
     return render(request, 'swoosh/name.html', {'form': form})
+
+
+def matplot(request):
+    return JsonResponse('something', safe=False)
