@@ -31,6 +31,7 @@ ALLOWED_HOSTS = [u'laveesingh.pythonanywhere.com', 'localhost']
 # Application definition
 
 INSTALLED_APPS = (
+    'testgen',
     'swoosh',
     'blog',
     'home',
