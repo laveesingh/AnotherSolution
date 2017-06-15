@@ -1,18 +1,6 @@
 $(document).ready(function(){
-    console.log("The script is running");
-
-    // $("#plot").on('click', function(){
-    //     $.ajax({
-    //         url: '/swoosh/plot/',
-    //         dataType: 'json',
-    //         success: function(data){
-    //             $("#imagediv").html(data);
-    //         }
-    //     });
-    // });
-
+    
     $("#plot").on("click", function(){
-        console.log("The plot is clicked");
         if($(this).hasClass("plotted")){
             $(this).removeClass("plotted");
             $("#imagediv").html("");
