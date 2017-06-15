@@ -39,5 +39,4 @@ def matplot(request):
         status = 1
     else:
         status = 0
-    for s in json_data:
     return JsonResponse({'json_data': json_data, 'status': status}, safe=False)

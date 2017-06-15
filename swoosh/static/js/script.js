@@ -4,9 +4,11 @@ $(document).ready(function(){
         if($(this).hasClass("plotted")){
             $(this).removeClass("plotted");
             $("#imagediv").html("");
+            $(this).html("Show Plot")
         }
         else{
             $(this).addClass("plotted");
+            $(this).html("Hide Plot");
             $.ajax({
                 url: '/swoosh/plot/',
                 dataType: 'json',
