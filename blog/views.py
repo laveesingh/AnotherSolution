@@ -19,9 +19,11 @@ def post_create(request):
         if form.is_valid():
             instance = form.save(commit=False)
             instance.save()
+            return HttpResponseRedirect(instance.get_absolute_url())
     form = PostForm()
     context = {
         'form': form,
+        'callback': 'Create',
     }
     return render(request, 'blog/post_create.html', context)
 
@@ -31,7 +33,9 @@ def post_edit(request, pk=None):
     if form.is_valid():
         instance = form.save(commit=False)
         instance.save()
+        return HttpResponseRedirect(instance.get_absolute_url())
     context = {
         'form': form,
+        'callback': 'Edit',
     }
-    return render(request, 'blog/post_edit.html', context)
+    return render(request, 'blog/post_create.html', context)
