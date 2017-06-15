@@ -1,7 +1,8 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse, HttpResponseRedirect
 
-from blog.models import Post
+from .models import Post
+from .forms import PostForm
 
 
 def show_posts(request):
@@ -10,3 +11,27 @@ def show_posts(request):
 
 def post_detail(request, pk):
     return render(request, 'blog/post_detail.html', {'post': Post.objects.filter(id=pk)[0]})
+
+
+def post_create(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST or None)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.save()
+    form = PostForm()
+    context = {
+        'form': form,
+    }
+    return render(request, 'blog/post_create.html', context)
+
+def post_edit(request, pk=None):
+    instance = get_object_or_404(Post, id=pk)
+    form = PostForm(request.POST or None, instance=instance)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+    context = {
+        'form': form,
+    }
+    return render(request, 'blog/post_edit.html', context)
