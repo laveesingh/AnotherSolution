@@ -12,16 +12,17 @@ from .generate_report import report
 def index(request):
     return render(request, 'swoosh/index.html')
 
-
+json_data = None
 def get_name(request):
-    print "Entering get_name"
-    # If this is a POST request we need to process the form data
+    global json_data
+    json_data = None
     if request.method == 'POST':
         # create a form instance and populate it with data from request
         form = NameForm(request.POST)
         if form.is_valid():
             your_name = form.cleaned_data['your_name']
             report_data = report(your_name)
+            json_data = report_data
             form = NameForm()
             return render(request, 'swoosh/name.html', {
                 'form': form,
@@ -35,4 +36,13 @@ def get_name(request):
 
 
 def matplot(request):
-    return JsonResponse('something', safe=False)
+    global json_data
+    if json_data is None:
+        print "Json_data isn't being set"
+        status = 1
+    else:
+        print "Json_data is being set"
+        status = 0
+    for s in json_data:
+        print s, json_data[s], type(json_data[s])
+    return JsonResponse({'json_data': json_data, 'status': status}, safe=False)
