@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'stats',
     # third party
     'pagedown',
+    'tagging',
 )
 
 MIDDLEWARE_CLASSES = (

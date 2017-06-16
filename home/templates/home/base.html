@@ -19,18 +19,34 @@
       .navbar{
         background-color: #00e600;
       }
+      .nav-area{
+        width: 100%;
+        margin-bottom: 20px;
+        min-height: 50px;
+      }
+      .nav-btn{
+        width: 10%;
+        min-height: 50px;
+      }
     </style>
   </head>
   <body>
     <div class="container">
-      <div class="navbar">
-        <ul class="nav nav-pills">
-          <li role="presentation" class="active"><a href="/home/">Home</a></li>
-          <li role="presentation"><a href="/blog/">Blog</a></li>
-          <li role="presentation"><a href="/stats/">Stats</a></li>
-          <li role="presentation"><a href="/swoosh/">Swoosh</a></li>
-          <li role="presentation"><a href="/testgen/">TestGen</a></li>
-        </ul>
+      <!-- <div class="navbar"> -->
+        <!-- <ul class="nav nav-pills"> -->
+          <!-- <li role="presentation" class="btn btn-success"><a href="/home/">Home</a></li> -->
+          <!-- <li role="presentation" class=" btn btn-success"><a href="/blog/">Blog</a></li> -->
+          <!-- <li role="presentation" class=" btn btn-success"><a href="/stats/">Stats</a></li> -->
+          <!-- <li role="presentation" class="btn btn-primary"><a href="/swoosh/">Swoosh</a></li> -->
+          <!-- <li role="presentation" class=""><a href="/testgen/">TestGen</a></li> -->
+        <!-- </ul> -->
+      <!-- </div> -->
+      <div class="btn-group nav-area" role="group">
+        <a href="/home/" class="btn btn-success nav-btn">Home</a>
+        <a href="/blog/" class="btn btn-success nav-btn">Blog</a>
+        <a href="/swoosh/" class="btn btn-success nav-btn">Swoosh</a>
+        <a href="/stats/" class="btn btn-success nav-btn">Stats</a>
+        <a href="/testgen/" class="btn btn-success nav-btn">Testgen</a>
       </div>
     {% block content %} {% endblock %}
     </div>
