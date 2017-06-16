@@ -13,7 +13,6 @@ def index(request):
 json_data = None
 def get_name(request):
     global json_data
-    json_data = None
     if request.method == 'POST':
         form = NameForm(request.POST)
         if form.is_valid():
