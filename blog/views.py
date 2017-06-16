@@ -6,7 +6,7 @@ from .forms import PostForm
 
 
 def show_posts(request):
-    return render(request, 'blog/show_posts.html', {'object_list': Post.objects.all().order_by('-last_edit_date'), 'all': True})
+    return render(request, 'blog/show_posts.html', {'object_list': Post.objects.all().order_by('last_edit_date'), 'all': True})
 
 
 def post_detail(request, pk):

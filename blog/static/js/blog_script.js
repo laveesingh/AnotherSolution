@@ -20,6 +20,8 @@ $(document).ready(function(){
     })
 
     $(".delete-span").on("click", function(){
+        alert("You're not auhorized to delete this post!");
+        return;
         var confirmed = confirm("Are you sure you want to delete this post?");
         if (!confirmed)
             return;

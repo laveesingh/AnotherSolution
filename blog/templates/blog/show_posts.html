@@ -45,7 +45,7 @@
                 </div>
                     <hr>
                 <div class="content-markdown">
-                    {{ post.body|truncatechars:200 }}
+                    {{ post.body|truncatechars:20000 }}
                 </div>
                     <hr>
                     (Last edit: {{ post.last_edit_date|date:"d/m/Y" }})
