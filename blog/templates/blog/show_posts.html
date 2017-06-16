@@ -15,6 +15,10 @@
         }
         .edit-span{
             float: right;
+            margin-right: 10px;
+        }
+        .delete-span{
+            float: right;
         }
     </style>
     <div class="row">
@@ -33,17 +37,27 @@
             <div class="col-sm-3"></div>
             <div id="post-list" class="post-div col-sm-6">
                 <div class="title-bar">
-                    {{ post.date|date:"d/m/Y" }}:
+                    {{ post.date|date:"d/m/Y" }}<br>
+                    <span class="id-span">{{ post.id }}</span>:&nbsp;
                     <span class="title-span"> <a href="/blog/{{ post.id }}">{{ post.title }}</a> </span>
+                    <span class="delete-span" id="{{ post.id }}"> <a href="#" class="btn btn-danger"> Delete Post</a> </span>
                     <span class="edit-span"> <a href="/blog/edit/{{ post.id }}" class="btn btn-warning"> Edit Post</a> </span>
                 </div>
                     <hr>
-                    {{ post.body|safe|truncatechars:200 }}
+                <div class="content-markdown">
+                    {{ post.body|truncatechars:200 }}
+                </div>
                     <hr>
                     (Last edit: {{ post.last_edit_date|date:"d/m/Y" }})
             </div>
             <div class="col-sm-3"></div>
         </div>
     {% endfor %}
+{% endblock %}
+
+{% block javascript %}
+    {% load staticfiles %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js" type="text/javascript"></script>
+    <script src="{% static 'js/blog_script.js' %}" type="text/javascript"></script>
 {% endblock %}
 <!--    <a href="http://data.typeracer.com/pit/profile?user=lavee_singh&ref=badge" target="_top"><img src="http://data.typeracer.com/misc/badge?user=lavee_singh" border="0" alt="TypeRacer.com scorecard for user lavee_singh"/></a> -->

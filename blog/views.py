@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 
 from .models import Post
 from .forms import PostForm
@@ -19,7 +19,7 @@ def post_create(request):
         if form.is_valid():
             instance = form.save(commit=False)
             instance.save()
-            return HttpResponseRedirect(instance.get_absolute_url())
+            # return HttpResponseRedirect(instance.get_absolute_url())
     form = PostForm()
     context = {
         'form': form,
@@ -39,3 +39,8 @@ def post_edit(request, pk=None):
         'callback': 'Edit',
     }
     return render(request, 'blog/post_create.html', context)
+
+def post_delete(request, pk=None):
+    instance = get_object_or_404(Post, id=pk)
+    instance.delete();
+    return JsonResponse({'message': "Successfully deleted!", 'status': 'OK'})

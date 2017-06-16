@@ -25,23 +25,27 @@ SECRET_KEY = 'vtidxf6$)ad*4v#8u&j+00b(^7grxk4e&2hw*x!tq9l@cw%m9k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [u'laveesingh.pythonanywhere.com', 'localhost']
+ALLOWED_HOSTS = [u'laveesingh.pythonanywhere.com', 'localhost', 'http://172.17.222.34', '127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = (
-    'testgen',
-    'swoosh',
-    'blog',
-    'home',
-    'stats',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # local apps
+    'testgen',
+    'swoosh',
+    'blog',
+    'home',
+    'stats',
+    # third party
+    'pagedown',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -105,3 +109,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = 'blog/static/'
