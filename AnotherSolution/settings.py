@@ -47,6 +47,7 @@ INSTALLED_APPS = (
     # third party
     'pagedown',
     'tagging',
+    'crispy_forms',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -111,3 +112,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = 'blog/static/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
