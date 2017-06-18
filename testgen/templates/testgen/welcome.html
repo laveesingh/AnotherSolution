@@ -119,6 +119,9 @@
             <button class="btn btn-primary" id="submit-btn">Generate Tests</button>
         </div>
         <div class="col-sm-6 block">
+            <button class="btn btn-default" id="copy-button" style="float: right;" data-clipboard-target="#test-data">
+                <span class="glyphicon glyphicon-copy"></span>
+            </button>
             <div id="test-data"></div>
         </div>
     </div>
@@ -127,4 +130,8 @@
 
 {% block javascript %}
     <script src="{% static 'js/testgen_script.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+    <script type="text/javascript">
+        new Clipboard("#copy-button");
+    </script>
 {% endblock %}
