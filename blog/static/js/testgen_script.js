@@ -114,4 +114,11 @@ $(document).ready(function(){
     $("#submit-btn").on("click", function(){
         generate()
     })
+
+    $(document).bind("keydown", null, function(e){
+        if(e.altKey && e.keyCode == 67){
+            $("#copy-button").click()
+            $("#copy-alert").show(0).delay(1000).fadeOut(1000)
+        }
+    })
 })

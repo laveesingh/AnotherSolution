@@ -42,12 +42,6 @@
     </div>
     <div class="row">
         <div class="col-sm-5 block">
-            <!-- <form onsubmit="javascript:generate();return false;" method="POST">
-                {% csrf_token %}
-                {{ form|crispy }}
-                <br>
-                <input readonly id='submit-btn' value='submit' class="btn btn-primary"/>
-            </form> -->
             {% csrf_token %}
             <div class="input-group">
                 <span class="input-group-addon">No of tests</span>
@@ -119,7 +113,11 @@
             <button class="btn btn-primary" id="submit-btn">Generate Tests</button>
         </div>
         <div class="col-sm-6 block">
-            <button class="btn btn-default" id="copy-button" style="float: right;" data-clipboard-target="#test-data">
+            <div class="alert alert-success" id="copy-alert" style="display: none;">
+                <strong>Success!</strong> Copied to clipboard!
+            </div>
+
+            <button title="Copy to clipboard(alt+c)" class="btn btn-default" id="copy-button" style="float: right;" data-clipboard-target="#test-data">
                 <span class="glyphicon glyphicon-copy"></span>
             </button>
             <div id="test-data"></div>
@@ -131,6 +129,7 @@
 {% block javascript %}
     <script src="{% static 'js/testgen_script.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.hotkeys/0.8b/jquery.hotkeys.min.js"></script>
     <script type="text/javascript">
         new Clipboard("#copy-button");
     </script>
