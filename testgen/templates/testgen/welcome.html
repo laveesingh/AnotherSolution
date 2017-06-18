@@ -1,15 +1,130 @@
 {% extends "home/base.html" %}
-
 {% block page_title %}
-Random Test Case Generator
+    Random Test Case Generator
+{% endblock %}
+{% block content %}
+    {% load crispy_forms_tags %}
+    <style>
+    .row > *{
+        color: black;
+    }
+    .block{
+        margin: 20px;
+        padding: 20px;
+        border-style: solid;
+        border-width: 1px;
+        border-color: #d6d6d6;
+        border-radius: 5px;
+        background-color: #45596d;
+        color: white;
+    }
+    #test-data{
+        width: 100%;
+        height: 100%;
+        color: black;
+        word-wrap: break-word;
+    }
+    .input-group{
+        margin: 10px;
+    }
+    .case_types{
+        border: 2px solid white;
+        margin: 5px;
+        border-radius: 5px;
+    }
+    </style>
+    <div class="row ">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6 block">
+            Generate Random Cases
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-5 block">
+            <!-- <form onsubmit="javascript:generate();return false;" method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <br>
+                <input readonly id='submit-btn' value='submit' class="btn btn-primary"/>
+            </form> -->
+            {% csrf_token %}
+            <div class="input-group">
+                <span class="input-group-addon">No of tests</span>
+                <span class="input-group-addon" ><input type="checkbox" id="test_no_checkbox"/></span>
+                <input type="text" id="no_of_tests" class="form-control" aria-describedby="test-no-checkbox">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">Case type</span>
+                <select class="form-control" id="case_type">
+                    <option value="integer">integer</option>
+                    <option value="array">array</option>
+                    <option value="string">string</option>
+                    <!-- <option value="binary_string">binary_string</option> -->
+                </select>
+            </div>
+            
+            <div class="case_types integer_type">
+                <span class="input-group">Integer Element Range</span>
+                <div class="input-group">
+                    <span class="input-group-addon">From</span>
+                    <input type="text" id="integer_range_from" class="form-control" />
+                    <span class="input-group-addon">To</span>
+                    <input type="text" id="integer_range_to" class="form-control" />
+                </div>
+            </div>
+            <!-- array controls: from, to, vertical -->
+            <div class="case_types array_type">
+                <div class="input-group">
+                    <span class="input-group-addon">No of items</span>
+                    <input type="text" id="array_no_of_items" class="form-control" />
+                </div>
+                <span class="input-group">Array Element Range</span>
+                <div class="input-group">
+                    <span class="input-group-addon">From</span>
+                    <input type="text" id="array_range_from" class="form-control" />
+                    <span class="input-group-addon">To</span>
+                    <input type="text" id="array_range_to" class="form-control" />
+                    <span class="input-group-addon">Vertical</span>
+                    <span class="input-group-addon"><input type="checkbox" id="array_vertical"/></span>
+                </div>
+            </div>
+            <!-- string controls: lower, upper, digits, symbols, binary, custom -->
+            <div class="case_types string_type">
+                <div class="input-group">
+                    <span class="input-group-addon">No of items</span>
+                    <input type="text" id="string_no_of_items" class="form-control" />
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon ">Lowercase</span>
+                    <span class="input-group-addon "><input type="checkbox" id="string_lower" class="string_controls"/></span>
+                    <span class="input-group-addon ">Uppercase</span>
+                    <span class="input-group-addon "><input type="checkbox" id="string_upper" class="string_controls"/></span>
+                    <span class="input-group-addon ">Digits</span>
+                    <span class="input-group-addon "><input type="checkbox" id="string_digits" class="string_controls"/></span>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon ">Symbols</span>
+                    <span class="input-group-addon "><input type="checkbox" id="string_symbols" class="string_controls"/></span>
+                    <span class="input-group-addon ">Binary</span>
+                    <span class="input-group-addon "><input type="checkbox" id="string_binary" class="string_controls"/></span>
+                    <span class="input-group-addon ">Custom</span>
+                    <span class="input-group-addon "><input type="checkbox" id="string_custom" class="string_controls"/></span>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon ">Custom Characters</span>
+                    <input disabled type="text" id="custom_symbols" class="form-control string_controls"/>
+                </div>
+            </div>
+            <button class="btn btn-primary" id="submit-btn">Generate Tests</button>
+        </div>
+        <div class="col-sm-6 block">
+            <div id="test-data"></div>
+        </div>
+    </div>
+    {% load staticfiles %}
 {% endblock %}
 
-{% block content %}
-    <h2> Generate Random Test Cases </h2>
-    <form action='.' method='post'>
-      {% csrf_token %}
-      {{ form.as_table }}
-      <br>
-      <input type='submit' value='submit' />
-    </form>
+{% block javascript %}
+    <script src="{% static 'js/testgen_script.js' %}"></script>
 {% endblock %}
