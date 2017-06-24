@@ -25,7 +25,7 @@ SECRET_KEY = 'vtidxf6$)ad*4v#8u&j+00b(^7grxk4e&2hw*x!tq9l@cw%m9k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [u'laveesingh.pythonanywhere.com', 'localhost', 'http://172.17.222.34', '127.0.0.1', 'immense-plains-28499.herokuapp.com']
+ALLOWED_HOSTS = [u'laveesingh.pythonanywhere.com', 'localhost', 'http://172.17.222.34', '127.0.0.1', 'another-solution.herokuapp.com']
 
 
 # Application definition
