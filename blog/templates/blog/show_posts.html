@@ -11,8 +11,8 @@
             border-width: 1px;
             border-color: #d6d6d6;
             border-radius: 5px;
-            background-color: #45596d;
-            color: white;
+            background-color: #fff; /* #45596d; */
+            /*color: white;*/
             /*background: linear-gradient(#77fc53, #6cfc53, #66fc53, #53fc58, #53fc80, #53fca1);*/
         }
         .edit-span{
@@ -25,7 +25,7 @@
     </style>
     <div class="row">
         <div class="col-sm-3"></div>
-        <div class="col-sm-6 post-div">
+        <div class="col-sm-6 post-div" id="post-list-header">
             <span class="header-span" style="font-size: 2em;">List of all the posts!</span>
             <span align="right" style="float: right">
                 <a class="btn btn-success" href="/blog/create">Create Post</a>
@@ -47,7 +47,7 @@
                 </div>
                     <hr>
                 <div class="content-markdown">
-                    {{ post.body|truncatechars:20000 }}
+                    {{ post.body|truncatechars:20000|safe }}
                 </div>
                     <hr>
                     (Last edit: {{ post.last_edit_date|date:"d/m/Y" }})

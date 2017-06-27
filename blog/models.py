@@ -3,12 +3,14 @@ from django.utils.timezone import now
 
 from tagging.fields import TagField
 from tagging.models import Tag
+from froala_editor.fields import FroalaField
 
 class Post(models.Model):
-    title = models.CharField(max_length=140)
-    body = models.TextField()
-    # last_edit = models.CharField(max_length=200)
-    date = models.DateTimeField(default=now)
+    title = models.CharField(default='', max_length=300)
+    author = models.CharField(default='', max_length=50)
+    # body = models.TextField()
+    body = FroalaField()
+    date = models.DateTimeField(blank=True)
     last_edit_date = models.DateTimeField(default=now)
     tags = TagField()
 

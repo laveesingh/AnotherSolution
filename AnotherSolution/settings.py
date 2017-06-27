@@ -48,6 +48,7 @@ INSTALLED_APPS = (
     'pagedown',
     'tagging',
     'crispy_forms',
+    'froala_editor',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -114,3 +115,12 @@ STATIC_URL = '/static/'
 STATIC_ROOT = 'blog/static/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "archives987@gmail.com"
+EMAIL_HOST_PASSWORD = "Test!@#$"
+
+FROALA_INCLUDE_JQUERY = False

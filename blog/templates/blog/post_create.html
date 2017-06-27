@@ -10,11 +10,21 @@
         textarea{
             width: 100%;
         }
+        .post-div{
+            margin-bottom: 20px;
+            padding: 20px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #d6d6d6;
+            border-radius: 5px;
+            background-color: #45596d;
+            font-family: Times;
+            /*background: linear-gradient(#77fc53, #6cfc53, #66fc53, #53fc58, #53fc80, #53fca1);*/
+        }
     </style>
-    {{ form.media }}
+    {{form.media}}
     <div class="row">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-6">
+        <div class="col-sm-6 post-div">
             <span class="header-span" align="center"> <h2>{{ callback }} Post</h2> </span>
             <form method='POST'>
                 {% csrf_token %}
@@ -22,6 +32,11 @@
                 <input type="submit" value="Create Post" class="btn btn-primary">
             </form>
         </div>
-        <div class="col-sm-3"></div>
+        <div class="col-sm-6 post-div" id="post_preview"></div>
     </div>
+{% endblock %}
+
+{% block javascript %}
+    {% load staticfiles %}
+    <script src="{% static 'js/post_create.js' %}"></script>
 {% endblock %}

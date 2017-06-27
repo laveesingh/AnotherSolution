@@ -13,28 +13,40 @@ $(document).ready(function(){
     })
     */
 
-    $(".content-markdown").each(function(){
-        var content = $(this).text().trim();
-        var marked_content = marked(content);
-        $(this).html(marked_content);
-    })
+    // $(".content-markdown").each(function(){
+    //     var content = $(this).text().trim();
+    //     var marked_content = marked(content);
+    //     $(this).html(marked_content);
+    // })
 
     $(".delete-span").on("click", function(){
-        alert("You're not auhorized to delete this post!");
-        return;
-        var confirmed = confirm("Are you sure you want to delete this post?");
-        if (!confirmed)
-            return;
+        // var confirmed = confirm("Are you sure you want to delete this post?");
+        // if (!confirmed)
+            // return;
         var id = $(this).attr('id');
         var this_span = this;
         $.ajax({
             url: "/blog/delete/" + id,
             success: function(data){
                 var cur_div = $(this_span).closest('.post-div');
-                cur_div.html(data['message']);
-                setTimeout(function(){ cur_div.fadeOut(3000); }, 1000);
+                var msg_div = $("#post-list-header");
+                if(data['status'] === 'deleted'){
+                    setTimeout(function(){ cur_div.fadeOut(3000); }, 1000);
+                    msg_div.html(data['message'] + msg_div.html());
+                }else{
+                    msg_div.html(data['message'] + msg_div.html());
+                }
                 // console.log($(this_span).closest('.post-div').html(data['message']));
             }
         });
     })
+
+    function loadScriptSync(src, id){
+        var s = document.createElement('script');
+        s.src = src;
+        s.type = 'text/javascript';
+        s.async = false;
+        document.getElementById(id).appendChild(s);
+    }
+
 })
